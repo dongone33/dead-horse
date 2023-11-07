@@ -9,7 +9,8 @@ curl --connect-timeout 60 -s -o white_domain_list.php https://raw.githubusercont
 php make-white-list.php
 
 cd ..
-sed 's/^\([.0-9A-Za-z\-]\+\)$/address \/\1\/-/g' anti-ad-white-list.txt >anti-ad-white-for-smartdns.txt
+sed 's/^\([.0-9A-Za-z\-]\+\)$/address \/\1\/-/g' anti-ad-white-list.txt >aanti-ad-white-list.txt
+sed -e 's/^.*/@@||&^$important/' anti-ad-white-list.txt > anti-ad-white-list-adguardhome.txt
 
 echo '#RULE-SET,AntiAd,DIRECT' >anti-ad-white-for-clash.yaml
 echo 'payload:' >>anti-ad-white-for-clash.yaml
